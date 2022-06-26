@@ -7,5 +7,10 @@ module.exports = {
     "plugin:vue/vue3-essential",
     "eslint:recommended",
     "@vue/eslint-config-prettier",
+    "prettier"
   ],
+  plugins: ["prettier"],
+  rules: {
+    "prettier/prettier": "error"
+  }
 };

@@ -3,7 +3,7 @@ import TheWelcome from "@/components/TheWelcome.vue";
 </script>
 
 <template>
-  <main>
-    <p class="text-xl">gaga</p>
+  <main class="">
+    <p class="text-center text-3xl">gaga</p>
   </main>
 </template>
