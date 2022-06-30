@@ -1,9 +1,6 @@
 <script setup>
 defineProps({
-    show: {
-        type: Boolean,
-        required: true
-    }
+    show: { type: Boolean }
 })
 </script>
 

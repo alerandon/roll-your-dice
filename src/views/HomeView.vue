@@ -1,21 +1,33 @@
 <script setup>
-import TheWelcome from "@/components/TheWelcome.vue";
+let formula = "";
 </script>
 
 <template>
   <main class="pt-24 px-5">
-    <div class="w-3/6 mx-auto">
+    <div id="calculator" class="w-3/6 mx-auto">
       <div class="w-full flex space-x-7 items-center justify-center">
-        <img src="src\assets\icons\dices\d4.png" alt=" " />
-        <img src="src\assets\icons\dices\d6.png" alt=" " />
-        <img src="src\assets\icons\dices\d8.png" alt=" " />
-        <img src="src\assets\icons\dices\d10.png" alt=" " />
-        <img src="src\assets\icons\dices\d12.png" alt=" " />
-        <img src="src\assets\icons\dices\d20.png" alt=" " />
+        <button>
+          <img src="src\assets\icons\dices\d4.png" alt=" " />
+        </button>
+        <button>
+          <img src="src\assets\icons\dices\d6.png" alt=" " />
+        </button>
+        <button>
+          <img src="src\assets\icons\dices\d8.png" alt=" " />
+        </button>
+        <button>
+          <img src="src\assets\icons\dices\d10.png" alt=" " />
+        </button>
+        <button>
+          <img src="src\assets\icons\dices\d12.png" alt=" " />
+        </button>
+        <button>
+          <img src="src\assets\icons\dices\d20.png" alt=" " />
+        </button>
       </div>
       <div
         class="bg-yellow-300 w-full h-20 max-w-2xl mx-auto border rounded-xl mt-6 py-1 flex items-center justify-center">
-        <p class="text-4xl">0</p>
+        <p class="text-4xl">{{ formula }}</p>
       </div>
       <div class="flex justify-center pt-5">
         <button class="w-24 text-white text-center text-xl py-1 bg-gray-500 border rounded-md">
