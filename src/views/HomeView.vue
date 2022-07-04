@@ -4,30 +4,43 @@ export default {
     return {
       formula: "",
       result: "",
-      calculation: ""
+      calculation: "",
+      dices: {
+        d4: 0,
+        d6: 0,
+        d8: 0,
+        d10: 0,
+        d12: 0,
+        d20: 0,
+      }
     }
   },
   methods: {
     dice(diceType) {
       if (this.formula.includes(diceType)) {
-        let pos = this.formula.lastIndexOf(diceType);
-        let quantity = this.formula.charAt(pos - 1);
-        let slice = this.formula.slice(pos - 1, pos + 3);
-        console.log(slice);
+        const pos = this.formula.indexOf(diceType);
+        const startPos = pos - this.dices[diceType].toString().length;
+        const endPos = pos + diceType.length;
+        const slice = this.formula.slice(startPos, endPos);
 
-        this.formula = this.formula.replace(quantity, String(Number(quantity) + 1));
+        this.dices[diceType]++;
+        this.formula = this.formula.replace(slice, this.dices[diceType] + diceType);
       }
       else if (this.formula) {
-        this.formula = this.formula.concat(' + 1' + diceType);
+        this.dices[diceType]++;
+        this.formula = this.formula.concat(' + ' + this.dices[diceType] + diceType);
       }
       else {
-        this.formula = this.formula.concat('1' + diceType);
+        this.dices[diceType]++;
+        this.formula = this.formula.concat(this.dices[diceType] + diceType);
       }
-
     },
 
     clear() {
       this.formula = "";
+      for (const dice in this.dices) {
+        this.dices[dice] = 0;
+      }
     },
 
     roll() {
