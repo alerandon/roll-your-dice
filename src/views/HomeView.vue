@@ -52,41 +52,43 @@ export default {
 
 <template>
   <main class="pt-24 px-5">
-    <div id="calculator" class="w-3/6 mx-auto">
-      <div class="w-full flex space-x-7 items-center justify-center">
-        <button @click="dice('d4')">
-          <img src="src\assets\icons\dices\d4.png" alt=" " />
+    <div id="calculator" class="w-11/12 sm:w-10/12 lg:w-8/12 xl:w-6/12 mx-auto">
+      <div class="w-full flex flex-wrap items-center justify-center">
+        <button class="mx-2 sm:mx-4" @click="dice('d4')">
+          <img class="w-10 md:w-12 h-10 md:h-12" src="src\assets\icons\dices\d4.png" alt=" " />
         </button>
-        <button @click="dice('d6')">
-          <img src="src\assets\icons\dices\d6.png" alt=" " />
+        <button class="mx-2 sm:mx-4" @click="dice('d6')">
+          <img class="w-10 md:w-12 h-10 md:h-12" src="src\assets\icons\dices\d6.png" alt=" " />
         </button>
-        <button @click="dice('d8')">
-          <img src="src\assets\icons\dices\d8.png" alt=" " />
+        <button class="mx-2 sm:mx-4" @click="dice('d8')">
+          <img class="w-10 md:w-12 h-10 md:h-12" src="src\assets\icons\dices\d8.png" alt=" " />
         </button>
-        <button @click="dice('d10')">
-          <img src="src\assets\icons\dices\d10.png" alt=" " />
+        <button class="mx-2 sm:mx-4" @click="dice('d10')">
+          <img class="w-10 md:w-12 h-10 md:h-12" src="src\assets\icons\dices\d10.png" alt=" " />
         </button>
-        <button @click="dice('d12')">
-          <img src="src\assets\icons\dices\d12.png" alt=" " />
+        <button class="mx-2 sm:mx-4" @click="dice('d12')">
+          <img class="w-10 md:w-12 h-10 md:h-12" src="src\assets\icons\dices\d12.png" alt=" " />
         </button>
-        <button @click="dice('d20')">
-          <img src="src\assets\icons\dices\d20.png" alt=" " />
+        <button class="mx-2 sm:mx-4" @click="dice('d20')">
+          <img class="w-10 md:w-12 h-10 md:h-12" src="src\assets\icons\dices\d20.png" alt=" " />
         </button>
       </div>
       <div
-        class="bg-yellow-300 w-full h-20 max-w-2xl mx-auto border rounded-xl overflow-x-auto mt-6 py-1 flex items-center justify-center">
-        <p class="text-4xl">{{ formula }}</p>
+        class="bg-yellow-300 w-full h-16 max-w-2xl mx-auto border rounded-xl overflow-x-auto mt-6 py-1 flex items-center justify-center">
+        <p class="text-center text-2xl lg:text-3xl">{{ formula }}</p>
       </div>
       <div class="flex justify-center pt-5">
-        <button @click="clear" class="w-24 text-white text-center text-xl py-1 bg-gray-500 border rounded-md">
+        <button @click="clear"
+          class="w-24 text-white text-center text-lg font-medium py-1 bg-gray-500 border rounded-md">
           Clear
         </button>
-        <button @click="roll" class="w-24 text-white text-center text-xl py-1 ml-2 bg-yellow-600 border rounded-md">
+        <button @click="roll"
+          class="w-24 text-white text-center text-lg font-medium py-1 ml-2 bg-yellow-600 border rounded-md">
           Roll
         </button>
       </div>
       <div class="text-center pt-20">
-        <h3 class="text-7xl">{{ result }}</h3>
+        <h3 class="text-xl md:text-4xl lg:text-7xl">{{ result }}</h3>
         <p class="pt-4">{{ calculation }}</p>
       </div>
     </div>
