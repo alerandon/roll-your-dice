@@ -1,10 +1,14 @@
 <script>
+
 export default {
   data() {
     return {
       formula: "",
       result: "",
-      calculation: "",
+      calculation: {
+        dices: "",
+        numbers: "",
+      },
       dices: {
         d4: 0,
         d6: 0,
@@ -37,14 +41,33 @@ export default {
     },
 
     clear() {
+      this.result = "";
       this.formula = "";
+
       for (const dice in this.dices) {
         this.dices[dice] = 0;
       }
     },
 
     roll() {
-      alert("Roll dices in development, stay tuned for updates...");
+      let total = 0;
+
+      for (const dice in this.dices) {
+        if (this.dices[dice] > 0) {
+          for (let i = 1; i <= this.dices[dice]; i++) {
+            total += (Math.floor(Math.random() * parseInt(dice.slice(1))) + 1);
+          }
+        }
+      }
+
+      this.result = total.toString();
+      this.calculation.dices = this.formula;
+    }
+  },
+
+  computed: {
+    calculatedFormula() {
+      return this.result ? (this.calculation.dices + ' = ' + this.calculation.numbers) : '';
     }
   }
 }
@@ -89,7 +112,7 @@ export default {
       </div>
       <div class="text-center pt-20">
         <h3 class="text-xl md:text-4xl lg:text-7xl">{{ result }}</h3>
-        <p class="pt-4">{{ calculation }}</p>
+        <p class="pt-4">{{ calculatedFormula }}</p>
       </div>
     </div>
   </main>
