@@ -43,6 +43,8 @@ export default {
     clear() {
       this.result = "";
       this.formula = "";
+      this.calculation.dices = "";
+      this.calculation.numbers = "";
 
       for (const dice in this.dices) {
         this.dices[dice] = 0;
@@ -51,12 +53,23 @@ export default {
 
     roll() {
       let total = 0;
+      let randomNumber = 0;
+      this.calculation.numbers = '';
 
       for (const dice in this.dices) {
         if (this.dices[dice] > 0) {
+          if (this.calculation.numbers) this.calculation.numbers = this.calculation.numbers.concat(' + ');
+          this.calculation.numbers = this.calculation.numbers.concat('(');
+
           for (let i = 1; i <= this.dices[dice]; i++) {
-            total += (Math.floor(Math.random() * parseInt(dice.slice(1))) + 1);
+            randomNumber = (Math.floor(Math.random() * parseInt(dice.slice(1))) + 1)
+            total += randomNumber;
+            this.calculation.numbers = this.calculation.numbers.concat(randomNumber.toString());
+
+            if (i < this.dices[dice]) this.calculation.numbers = this.calculation.numbers.concat(' + ');
           }
+
+          this.calculation.numbers = this.calculation.numbers.concat(')');
         }
       }
 
@@ -112,7 +125,7 @@ export default {
       </div>
       <div class="text-center pt-20">
         <h3 class="text-xl md:text-4xl lg:text-7xl">{{ result }}</h3>
-        <p class="pt-4">{{ calculatedFormula }}</p>
+        <p class="pt-6">{{ calculatedFormula }}</p>
       </div>
     </div>
   </main>
