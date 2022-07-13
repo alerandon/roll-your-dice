@@ -52,17 +52,17 @@ export default {
     },
 
     roll() {
+      const diceOrder = this.formula.match(/([d0-9])\d+/g);
       let total = 0;
-      let randomNumber = 0;
       this.calculation.numbers = '';
 
-      for (const dice in this.dices) {
+      diceOrder.forEach(dice => {
         if (this.dices[dice] > 0) {
           if (this.calculation.numbers) this.calculation.numbers = this.calculation.numbers.concat(' + ');
           this.calculation.numbers = this.calculation.numbers.concat('(');
 
           for (let i = 1; i <= this.dices[dice]; i++) {
-            randomNumber = (Math.floor(Math.random() * parseInt(dice.slice(1))) + 1)
+            let randomNumber = (Math.floor(Math.random() * parseInt(dice.slice(1))) + 1)
             total += randomNumber;
             this.calculation.numbers = this.calculation.numbers.concat(randomNumber.toString());
 
@@ -71,7 +71,7 @@ export default {
 
           this.calculation.numbers = this.calculation.numbers.concat(')');
         }
-      }
+      });
 
       this.result = total.toString();
       this.calculation.dices = this.formula;
